@@ -1,38 +1,57 @@
 package org.zinaliev.puzzles.bits;
 
+/**
+ * Reverse bits of an 32 bit unsigned integer
+ *
+ * Example 1:
+ *
+ * x = 0,
+ *
+ *           00000000000000000000000000000000
+ * =>        00000000000000000000000000000000
+ * return 0
+ *
+ * Example 2:
+ *
+ * x = 3,
+ *
+ *           00000000000000000000000000000011
+ * =>        11000000000000000000000000000000
+ * return 3221225472
+ *
+ * NOTE: Since java does not have unsigned int, use long
+ */
 public class ReverseBits {
 
   public long reverse(long a) {
-    long original = a;
-    long right = 1;
-    long left = right << 31;
-    long mask = left ^ right;
+    long result = 0;
+    long mask;
 
-    for (int i = 1; i < 16; i++) {
-//      if (getBit(a, i) != getBit(a, 32 - i)) {
-//        a = a ^ mask;
-//      }
+    for (int i = 0; i < 32; i++) {
 
-      if(bitsEqual(a, mask)){
-        a = a ^ mask;
+      // traverse bits in reversed order
+      result = result << 1;
+
+      mask = 1 << i;
+
+
+//      !!!! this was my initial solution
+//      BUT
+//      (long) (1 << 31) doesn't equal to
+//      00000000_00000000_00000000_00000000_10000000_00000000_00000000_00000000
+//      as I expected but equals to
+//      11111111_11111111_11111111_11111111_10000000_00000000_00000000_00000000
+//      if ((a & mask) == mask) {
+
+      // to check i-th bit value
+      if ((a & mask) != 0) {
+
+        // 'append' 1 to result
+        result = result | 1;
       }
 
-      left = left >> 1;
-      right = right << 1;
-      mask = left ^ right;
     }
 
-    return a;
-
-  }
-
-  private long getBit(long source, int i) {
-    return (source << (64 - i)) >> 63;
-  }
-
-  private boolean bitsEqual(long source, long mask){
-    long masked = source & mask;
-
-    return (masked ^ mask) == mask || (masked ^ mask) == 0;
+    return result;
   }
 }

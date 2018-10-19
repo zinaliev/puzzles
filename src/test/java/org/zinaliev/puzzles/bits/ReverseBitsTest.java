@@ -2,13 +2,7 @@ package org.zinaliev.puzzles.bits;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 public class ReverseBitsTest {
 
@@ -27,5 +21,10 @@ public class ReverseBitsTest {
   @Test
   public void test_111593685() {
     assertEquals(2870175072L, solution.reverse(111593685L));
+  }
+
+  @Test
+  public void test_4294967295() {
+    assertEquals(4294967295L, solution.reverse(4294967295L));
   }
 }
