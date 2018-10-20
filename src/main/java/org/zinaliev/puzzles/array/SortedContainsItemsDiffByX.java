@@ -18,8 +18,10 @@ import java.util.ArrayList;
  * Return 0 / 1 ( 0 for false, 1 for true ) for this problem
  * <p>
  * Try doing this in less than linear space complexity.
+ *
+ * NOTE : There is also a version for UNSORTED List - {@link org.zinaliev.puzzles.list.ContainsItemsDiffByX}
  */
-public class ContainsItemsDiffByX {
+public class SortedContainsItemsDiffByX {
 
   public int diffPossible(ArrayList<Integer> a, int k) {
     if (a == null || a.size() < 2)

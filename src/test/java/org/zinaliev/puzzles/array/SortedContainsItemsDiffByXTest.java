@@ -12,21 +12,21 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-public class ContainsItemsDiffByXTest {
+public class SortedContainsItemsDiffByXTest {
 
-  private final ContainsItemsDiffByX solution = new ContainsItemsDiffByX();
+  private final SortedContainsItemsDiffByX solution = new SortedContainsItemsDiffByX();
 
   private ArrayList<Integer> input;
 
   @Test
-  public void name_1_123() {
+  public void test_1_123() {
     input = ListHelpers.asList(1, 2, 3);
 
     assertEquals(1, solution.diffPossible(input, 1));
   }
 
   @Test
-  public void name_0_12234() {
+  public void test_0_12234() {
     input = ListHelpers.asList(1, 2, 2, 3, 4);
 
     assertEquals(1, solution.diffPossible(input, 0));
@@ -34,14 +34,14 @@ public class ContainsItemsDiffByXTest {
 
 
   @Test
-  public void name_5_123469() {
+  public void test_5_123469() {
     input = ListHelpers.asList(1, 2, 2, 3, 4, 6, 9);
 
     assertEquals(1, solution.diffPossible(input, 5));
   }
 
   @Test
-  public void name_9_123469() {
+  public void test_9_123469() {
     input = ListHelpers.asList(1, 2, 2, 3, 4, 6, 9);
 
     assertEquals(0, solution.diffPossible(input, 9));
