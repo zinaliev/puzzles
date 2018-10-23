@@ -3,7 +3,9 @@ package org.zinaliev.puzzles.queue;
 /**
  * Source https://leetcode.com/explore/featured/card/queue-stack/228/first-in-first-out-data-structure/1395/
  *
- * (leetcode's implementation)
+ * This is leetcode's implementation
+ *
+ * Pay attention to {@link CyclicBuffer} - it's implementation is better from ease of maintain and read perspectives
  */
 public class LcCircularQueue {
 
