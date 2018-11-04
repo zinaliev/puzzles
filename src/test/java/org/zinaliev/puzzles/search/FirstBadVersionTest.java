@@ -2,6 +2,10 @@ package org.zinaliev.puzzles.search;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
 
 public class FirstBadVersionTest {
@@ -36,4 +40,9 @@ public class FirstBadVersionTest {
     assertEquals(2, new FirstBadVersion(2).firstBadVersion(2));
   }
 
+
+  @Test
+  public void name() {
+    Map<Integer, Integer> map = new HashMap<>();
+  }
 }
