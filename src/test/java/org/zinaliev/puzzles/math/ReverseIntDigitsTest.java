@@ -47,4 +47,9 @@ public class ReverseIntDigitsTest {
   public void test_Minus1234567891() {
     assertEquals(-1987654321, solution.reverse(-1234567891));
   }
+
+  @Test
+  public void test_1534236469() {
+    assertEquals(0, solution.reverse(1534236469));
+  }
 }

@@ -18,23 +18,26 @@ package org.zinaliev.puzzles.math;
  */
 public class ReverseIntDigits {
 
-  public int reverse(int a) {
-    int sign = a < 0 ? -1 : 1;
-    a *= sign;
+  public int reverse(int x) {
+    int result = 0;
 
-    long result = 0;
+    int sign = x < 0 ? -1 : 1;
+    x *= sign;
 
-    while (a > 0) {
-      result *= 10;
-      result += a % 10;
+    while (x > 0) {
 
-      a /= 10;
+      int tail = x % 10;
+      int cur = result * 10 + tail;
+
+      // OVERFLOW DETECTION
+      if ((cur - tail) / 10 != result)
+        return 0;
+
+      result = cur;
+
+      x = x / 10;
     }
 
-    if (result >= Integer.MAX_VALUE)
-      result = 0;
-
-
-    return (int) (result * sign);
+    return result * sign;
   }
 }

@@ -21,6 +21,10 @@ public class ListNode {
         '}';
   }
 
+  public int[] toArray(){
+    return toArray(this);
+  }
+
   public static ListNode of(int... items) {
     if (items == null || items.length == 0)
       return null;
