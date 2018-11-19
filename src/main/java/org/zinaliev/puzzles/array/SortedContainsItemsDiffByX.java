@@ -18,29 +18,29 @@ import java.util.ArrayList;
  * Return 0 / 1 ( 0 for false, 1 for true ) for this problem
  * <p>
  * Try doing this in less than linear space complexity.
- *
+ * <p>
  * NOTE : There is also a version for UNSORTED List - {@link org.zinaliev.puzzles.list.ContainsItemsDiffByX}
  */
 public class SortedContainsItemsDiffByX {
 
-  public int diffPossible(ArrayList<Integer> a, int k) {
-    if (a == null || a.size() < 2)
-      return 0;
+    public int diffPossible(ArrayList<Integer> a, int k) {
+        if (a == null || a.size() < 2)
+            return 0;
 
-    int i = 0;
-    int j = 1;
+        int i = 0;
+        int j = 1;
 
-    while (i < a.size() && j < a.size()) {
+        while (i < a.size() && j < a.size()) {
 
-      if (a.get(i) + k == a.get(j) && i != j)
-        return 1;
-      else if (a.get(i) + k <= a.get(j)) {
-        i++;
-      } else {
-        j++;
-      }
+            if (a.get(i) + k == a.get(j) && i != j)
+                return 1;
+            else if (a.get(i) + k <= a.get(j)) {
+                i++;
+            } else {
+                j++;
+            }
+        }
+
+        return 0;
     }
-
-    return 0;
-  }
 }

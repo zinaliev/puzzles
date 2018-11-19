@@ -19,54 +19,54 @@ package org.zinaliev.puzzles.design;
  */
 public class MinStack {
 
-  private Node head = null;
+    private Node head = null;
 
-  /**
-   * initialize your data structure here.
-   */
-  public MinStack() {
+    /**
+     * initialize your data structure here.
+     */
+    public MinStack() {
 
-  }
-
-  public void push(int x) {
-    int min = head != null ? head.min : Integer.MAX_VALUE;
-
-    head = new Node(x, x < min ? x : min, head);
-  }
-
-  public void pop() {
-    if (head == null)
-      throw new IllegalStateException("Can not perform pop on an empty stack");
-
-    head = head.next;
-  }
-
-  public int top() {
-    if (head == null)
-      throw new IllegalStateException("Can not get top item of an empty stack");
-
-    return head.val;
-  }
-
-  public int getMin() {
-    if (head == null)
-      throw new IllegalStateException("Can not get min item of an empty stack");
-
-    return head.min;
-  }
-
-  private static class Node {
-
-    final int val;
-    final int min;
-    final Node next;
-
-    private Node(int val, int min, Node next) {
-      this.val = val;
-      this.min = min;
-      this.next = next;
     }
-  }
+
+    public void push(int x) {
+        int min = head != null ? head.min : Integer.MAX_VALUE;
+
+        head = new Node(x, x < min ? x : min, head);
+    }
+
+    public void pop() {
+        if (head == null)
+            throw new IllegalStateException("Can not perform pop on an empty stack");
+
+        head = head.next;
+    }
+
+    public int top() {
+        if (head == null)
+            throw new IllegalStateException("Can not get top item of an empty stack");
+
+        return head.val;
+    }
+
+    public int getMin() {
+        if (head == null)
+            throw new IllegalStateException("Can not get min item of an empty stack");
+
+        return head.min;
+    }
+
+    private static class Node {
+
+        final int val;
+        final int min;
+        final Node next;
+
+        private Node(int val, int min, Node next) {
+            this.val = val;
+            this.min = min;
+            this.next = next;
+        }
+    }
 }
 
 /**

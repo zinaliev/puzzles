@@ -14,33 +14,33 @@ package org.zinaliev.puzzles.list;
  */
 public class RemoveNthFromEndNode {
 
-  public static ListNode removeNthFromEnd(ListNode head, int n) {
-    if (head == null)
-      return null;
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        if (head == null)
+            return null;
 
-    ListNode start = new ListNode(0);
-    start.next = head;
+        ListNode start = new ListNode(0);
+        start.next = head;
 
-    ListNode slow = start;
-    ListNode fast = start;
+        ListNode slow = start;
+        ListNode fast = start;
 
-    while (--n >= 0) {
-      if (fast.next == null)
-        break;
+        while (--n >= 0) {
+            if (fast.next == null)
+                break;
 
-      fast = fast.next;
+            fast = fast.next;
+        }
+
+        while (fast.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        if (slow.next != null)
+            slow.next = slow.next.next;
+
+        return start.next;
     }
-
-    while (fast.next != null) {
-      slow = slow.next;
-      fast = fast.next;
-    }
-
-    if (slow.next != null)
-      slow.next = slow.next.next;
-
-    return start.next;
-  }
 
   /*
   a) 1, n = 0

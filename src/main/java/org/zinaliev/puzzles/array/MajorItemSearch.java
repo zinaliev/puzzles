@@ -12,22 +12,22 @@ package org.zinaliev.puzzles.array;
  */
 public class MajorItemSearch {
 
-  public int majorityElement(int[] a) {
+    public int majorityElement(int[] a) {
 
-    int result = 0;
-    int counter = 0;
+        int result = 0;
+        int counter = 0;
 
-    for (int i : a) {
-      if (counter == 0) {
-        result = i;
-        counter++;
-      } else if (i == result) {
-        counter++;
-      } else {
-        counter--;
-      }
+        for (int i : a) {
+            if (counter == 0) {
+                result = i;
+                counter++;
+            } else if (i == result) {
+                counter++;
+            } else {
+                counter--;
+            }
+        }
+
+        return result;
     }
-
-    return result;
-  }
 }

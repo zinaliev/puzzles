@@ -14,26 +14,26 @@ package org.zinaliev.puzzles.string;
  */
 public class ReverseString {
 
-  public String reverseString(String s) {
-    if (s == null)
-      return null;
+    public String reverseString(String s) {
+        if (s == null)
+            return null;
 
-    char[] result = s.toCharArray();
+        char[] result = s.toCharArray();
 
-    int start = 0;
-    int end = result.length - 1;
-    char tmp;
+        int start = 0;
+        int end = result.length - 1;
+        char tmp;
 
-    while (start < end) {
+        while (start < end) {
 
-      tmp = result[start];
-      result[start] = result[end];
-      result[end] = tmp;
+            tmp = result[start];
+            result[start] = result[end];
+            result[end] = tmp;
 
-      start++;
-      end--;
+            start++;
+            end--;
+        }
+
+        return new String(result);
     }
-
-    return new String(result);
-  }
 }

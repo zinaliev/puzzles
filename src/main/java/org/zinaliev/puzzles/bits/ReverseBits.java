@@ -2,37 +2,37 @@ package org.zinaliev.puzzles.bits;
 
 /**
  * Reverse bits of an 32 bit unsigned integer
- *
+ * <p>
  * Example 1:
- *
+ * <p>
  * x = 0,
- *
- *           00000000000000000000000000000000
+ * <p>
+ * 00000000000000000000000000000000
  * =>        00000000000000000000000000000000
  * return 0
- *
+ * <p>
  * Example 2:
- *
+ * <p>
  * x = 3,
- *
- *           00000000000000000000000000000011
+ * <p>
+ * 00000000000000000000000000000011
  * =>        11000000000000000000000000000000
  * return 3221225472
- *
+ * <p>
  * NOTE: Since java does not have unsigned int, use long
  */
 public class ReverseBits {
 
-  public long reverse(long a) {
-    long result = 0;
-    long mask;
+    public long reverse(long a) {
+        long result = 0;
+        long mask;
 
-    for (int i = 0; i < 32; i++) {
+        for (int i = 0; i < 32; i++) {
 
-      // traverse bits in reversed order
-      result = result << 1;
+            // traverse bits in reversed order
+            result = result << 1;
 
-      mask = 1 << i;
+            mask = 1 << i;
 
 
 //      !!!! this was my initial solution
@@ -43,15 +43,15 @@ public class ReverseBits {
 //      11111111_11111111_11111111_11111111_10000000_00000000_00000000_00000000
 //      if ((a & mask) == mask) {
 
-      // to check i-th bit value
-      if ((a & mask) != 0) {
+            // to check i-th bit value
+            if ((a & mask) != 0) {
 
-        // 'append' 1 to result
-        result = result | 1;
-      }
+                // 'append' 1 to result
+                result = result | 1;
+            }
 
+        }
+
+        return result;
     }
-
-    return result;
-  }
 }

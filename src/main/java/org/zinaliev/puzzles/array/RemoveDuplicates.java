@@ -19,72 +19,72 @@ import java.util.ArrayList;
  */
 public class RemoveDuplicates {
 
-  /**
-   * The most beautiful solution
-   */
-  public int removeDupes(ArrayList<Integer> a) {
+    /**
+     * The most beautiful solution
+     */
+    public int removeDupes(ArrayList<Integer> a) {
 
-    if (a == null || a.isEmpty())
-      return 0;
+        if (a == null || a.isEmpty())
+            return 0;
 
-    int lastUniqueIndex = 0;
+        int lastUniqueIndex = 0;
 
-    for (int i : a) {
-      if (a.get(lastUniqueIndex) != i) {
-        lastUniqueIndex++;
-        a.set(lastUniqueIndex, i);
-      }
-    }
-
-    return lastUniqueIndex + 1;
-  }
-
-  /**
-   * 1 - Returns number of distinct elements
-   * 2 - Modifies original array thus it's first items are all distinct ones present
-   */
-  public int removeDuplicates(int[] nums) {
-    int distinct = 0;
-
-    for (int i = 0; i < nums.length - 1; i++) {
-      for (int j = i + 1; j < nums.length; j++) {
-
-        if (nums[i] != nums[j]) {
-          nums[++distinct] = nums[j];
-          i = j - 1;
-          break;
+        for (int i : a) {
+            if (a.get(lastUniqueIndex) != i) {
+                lastUniqueIndex++;
+                a.set(lastUniqueIndex, i);
+            }
         }
-      }
+
+        return lastUniqueIndex + 1;
     }
 
-    return distinct + 1;
-  }
+    /**
+     * 1 - Returns number of distinct elements
+     * 2 - Modifies original array thus it's first items are all distinct ones present
+     */
+    public int removeDuplicates(int[] nums) {
+        int distinct = 0;
 
-  /**
-   * Second solution
-   */
-  public int removeDuplicates(ArrayList<Integer> a) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
 
-    if (a == null || a.size() == 0)
-      return 0;
+                if (nums[i] != nums[j]) {
+                    nums[++distinct] = nums[j];
+                    i = j - 1;
+                    break;
+                }
+            }
+        }
 
-    int lastUnique = a.get(0);
-    int lastUniqueIndex = 1;
-
-    int i = 1;
-
-    while (i < a.size()) {
-
-      if (a.get(i) != lastUnique) {
-        lastUnique = a.get(i);
-        a.set(lastUniqueIndex, a.get(i));
-        lastUniqueIndex++;
-      }
-
-      i++;
+        return distinct + 1;
     }
 
+    /**
+     * Second solution
+     */
+    public int removeDuplicates(ArrayList<Integer> a) {
 
-    return lastUniqueIndex;
-  }
+        if (a == null || a.size() == 0)
+            return 0;
+
+        int lastUnique = a.get(0);
+        int lastUniqueIndex = 1;
+
+        int i = 1;
+
+        while (i < a.size()) {
+
+            if (a.get(i) != lastUnique) {
+                lastUnique = a.get(i);
+                a.set(lastUniqueIndex, a.get(i));
+                lastUniqueIndex++;
+            }
+
+            i++;
+        }
+
+
+        return lastUniqueIndex;
+    }
 }

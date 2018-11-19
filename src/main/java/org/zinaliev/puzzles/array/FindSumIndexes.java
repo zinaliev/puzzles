@@ -18,22 +18,22 @@ import java.util.Map;
  */
 public class FindSumIndexes {
 
-  public int[] twoSum(int[] nums, int target) {
-    if (nums == null || nums.length < 2)
-      return null;
+    public int[] twoSum(int[] nums, int target) {
+        if (nums == null || nums.length < 2)
+            return null;
 
-    Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
 
-    for (int i = 0; i < nums.length; i++) {
-      int paired = target - nums[i];
+        for (int i = 0; i < nums.length; i++) {
+            int paired = target - nums[i];
 
-      if (map.containsKey(paired)) {
-        return new int[]{map.get(paired), i};
-      } else {
-        map.put(nums[i], i);
-      }
+            if (map.containsKey(paired)) {
+                return new int[]{map.get(paired), i};
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+
+        return null;
     }
-
-    return null;
-  }
 }

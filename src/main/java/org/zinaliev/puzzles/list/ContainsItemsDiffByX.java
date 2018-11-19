@@ -22,27 +22,27 @@ import java.util.Map;
  * <p>
  * <p>
  * NOTE: This version is for an UNSORTED ARRAY
- *       Version for sorted array - {@link org.zinaliev.puzzles.array.SortedContainsItemsDiffByX}
+ * Version for sorted array - {@link org.zinaliev.puzzles.array.SortedContainsItemsDiffByX}
  */
 public class ContainsItemsDiffByX {
 
-  public int diffPossible(final List<Integer> a, int b) {
-    Map<Integer, Integer> freq = new HashMap<>();
+    public int diffPossible(final List<Integer> a, int b) {
+        Map<Integer, Integer> freq = new HashMap<>();
 
-    for (Integer i : a) {
-      freq.merge(i, 1, (k, v) -> v + 1);
-    }
-
-    for (Integer i : a) {
-      if (b == 0) {
-        if (freq.get(i) > 1) {
-          return 1;
+        for (Integer i : a) {
+            freq.merge(i, 1, (k, v) -> v + 1);
         }
-      } else if (freq.containsKey(i + b) || freq.containsKey(i - b)) {
-        return 1;
-      }
-    }
 
-    return 0;
-  }
+        for (Integer i : a) {
+            if (b == 0) {
+                if (freq.get(i) > 1) {
+                    return 1;
+                }
+            } else if (freq.containsKey(i + b) || freq.containsKey(i - b)) {
+                return 1;
+            }
+        }
+
+        return 0;
+    }
 }

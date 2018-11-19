@@ -17,21 +17,21 @@ package org.zinaliev.puzzles.string;
  */
 public class LastWordLength {
 
-  public int lengthOfLastWord(final String a) {
+    public int lengthOfLastWord(final String a) {
 
-    int result = 0;
+        int result = 0;
 
-    int i = a.length() - 1;
+        int i = a.length() - 1;
 
-    while (i >= 0 && a.charAt(i) == ' ') {
-      i--;
+        while (i >= 0 && a.charAt(i) == ' ') {
+            i--;
+        }
+
+        while (i >= 0 && a.charAt(i) != ' ') {
+            result++;
+            i--;
+        }
+
+        return result;
     }
-
-    while (i >= 0 && a.charAt(i) != ' ') {
-      result++;
-      i--;
-    }
-
-    return result;
-  }
 }

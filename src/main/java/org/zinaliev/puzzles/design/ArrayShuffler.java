@@ -21,40 +21,40 @@ import java.util.Random;
  * solution.shuffle();
  */
 public class ArrayShuffler {
-  private final Random random = new Random();
-  private final int[] original;
+    private final Random random = new Random();
+    private final int[] original;
 
-  public ArrayShuffler(int[] nums) {
-    this.original = nums;
-  }
-
-  /**
-   * Resets the array to its original configuration and return it.
-   */
-  public int[] reset() {
-    return original;
-  }
-
-  /**
-   * Returns a random shuffling of the array.
-   */
-  public int[] shuffle() {
-
-    int[] shuffled = original.clone();
-
-    for (int i = 0; i < original.length; i++) {
-      swap(shuffled, i, random.nextInt(original.length));
+    public ArrayShuffler(int[] nums) {
+        this.original = nums;
     }
 
-    return shuffled;
-  }
+    /**
+     * Resets the array to its original configuration and return it.
+     */
+    public int[] reset() {
+        return original;
+    }
 
-  private void swap(int[] shuffled, int a, int b) {
+    /**
+     * Returns a random shuffling of the array.
+     */
+    public int[] shuffle() {
 
-    shuffled[a] = shuffled[b] ^ shuffled[a];
-    shuffled[b] = shuffled[b] ^ shuffled[a];
-    shuffled[a] = shuffled[b] ^ shuffled[a];
-  }
+        int[] shuffled = original.clone();
+
+        for (int i = 0; i < original.length; i++) {
+            swap(shuffled, i, random.nextInt(original.length));
+        }
+
+        return shuffled;
+    }
+
+    private void swap(int[] shuffled, int a, int b) {
+
+        shuffled[a] = shuffled[b] ^ shuffled[a];
+        shuffled[b] = shuffled[b] ^ shuffled[a];
+        shuffled[a] = shuffled[b] ^ shuffled[a];
+    }
 }
 
 /**

@@ -25,26 +25,26 @@ package org.zinaliev.puzzles.dynamic;
  */
 public class ClimbingStairs {
 
-  public int climbStairs(int n) {
-    if (n < 0)
-      throw new IllegalArgumentException("n can not be less than zero");
+    public int climbStairs(int n) {
+        if (n < 0)
+            throw new IllegalArgumentException("n can not be less than zero");
 
-    if (n < 3)
-      return n;
+        if (n < 3)
+            return n;
 
-    int[] cache = new int[]{1, 2};
+        int[] cache = new int[]{1, 2};
 
-    int i = 1;
+        int i = 1;
 
-    while (n >= 3) {
-      i = (i + 1) % 2;
+        while (n >= 3) {
+            i = (i + 1) % 2;
 
-      cache[i] = cache[0] + cache[1];
+            cache[i] = cache[0] + cache[1];
 
-      n--;
+            n--;
+        }
+
+        return cache[i];
     }
-
-    return cache[i];
-  }
 
 }

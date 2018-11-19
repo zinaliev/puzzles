@@ -23,71 +23,71 @@ import java.util.Deque;
  */
 public class IsPowerOfTwo {
 
-  public int power(String a) {
-    return isPowerOfTwo(a) ? 1 : 0;
-  }
+    public int power(String a) {
+        return isPowerOfTwo(a) ? 1 : 0;
+    }
 
-  public boolean isPowerOfTwo(String num) {
+    public boolean isPowerOfTwo(String num) {
 
-    if (num == null || num.length() == 0)
-      return false;
+        if (num == null || num.length() == 0)
+            return false;
 
-    ArrayList<Integer> bigInt = asInts(num);
+        ArrayList<Integer> bigInt = asInts(num);
 
-    int start = 0;
-    int end = bigInt.size() - 1;
+        int start = 0;
+        int end = bigInt.size() - 1;
 
-    int carry = 0;
-    int cur = 0;
+        int carry = 0;
+        int cur = 0;
 
-    while (start <= end) {
+        while (start <= end) {
 
-      if (start == end && bigInt.get(start) == 2)
-        return true;
+            if (start == end && bigInt.get(start) == 2)
+                return true;
 
-      start = divideByTwo(bigInt, start);
+            start = divideByTwo(bigInt, start);
 
-      if (start == -1) {
+            if (start == -1) {
+                return false;
+            }
+        }
+
         return false;
-      }
     }
 
-    return false;
-  }
+    protected int divideByTwo(ArrayList<Integer> bigInt, int start) {
+        int carry = 0;
+        int cur = 0;
 
-  protected int divideByTwo(ArrayList<Integer> bigInt, int start) {
-    int carry = 0;
-    int cur = 0;
+        for (int i = start; i < bigInt.size(); i++) {
+            cur = bigInt.get(i) + carry;
 
-    for (int i = start; i < bigInt.size(); i++) {
-      cur = bigInt.get(i) + carry;
+            carry = cur % 2 != 0 ? 10 : 0;
+            cur = cur / 2;
 
-      carry = cur % 2 != 0 ? 10 : 0;
-      cur = cur / 2;
+            bigInt.set(i, cur);
+        }
 
-      bigInt.set(i, cur);
+        if (bigInt.get(start) == 0)
+            start++;
+
+        System.out.println(Arrays.toString(bigInt.toArray()));
+
+        if (carry != 0)
+            return -1;
+        else
+            return start;
     }
 
-    if (bigInt.get(start) == 0)
-      start++;
+    protected ArrayList<Integer> asInts(String num) {
+        ArrayList<Integer> result = new ArrayList<>();
 
-    System.out.println(Arrays.toString(bigInt.toArray()));
+        for (int i = 0; i < num.length(); i++) {
+            result.add(Integer.parseInt(String.valueOf(num.charAt(i))));
+        }
 
-    if (carry != 0)
-      return -1;
-    else
-      return start;
-  }
+        Deque<Integer> stack = new ArrayDeque<>();
 
-  protected ArrayList<Integer> asInts(String num) {
-    ArrayList<Integer> result = new ArrayList<>();
-
-    for (int i = 0; i < num.length(); i++) {
-      result.add(Integer.parseInt(String.valueOf(num.charAt(i))));
+        return result;
     }
-
-    Deque<Integer> stack = new ArrayDeque<>();
-
-    return result;
-  }
 }

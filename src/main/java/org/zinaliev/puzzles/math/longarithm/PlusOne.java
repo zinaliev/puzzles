@@ -28,31 +28,31 @@ import java.util.ArrayList;
  */
 public class PlusOne {
 
-  public ArrayList<Integer> plusOne(ArrayList<Integer> a) {
+    public ArrayList<Integer> plusOne(ArrayList<Integer> a) {
 
-    int carry = 1;
-    int x;
+        int carry = 1;
+        int x;
 
-    for (int i = a.size() - 1; i >= 0; i--) {
-      x = carry + a.get(i);
-      carry = x / 10;
+        for (int i = a.size() - 1; i >= 0; i--) {
+            x = carry + a.get(i);
+            carry = x / 10;
 
-      a.set(i, x % 10);
+            a.set(i, x % 10);
+        }
+
+        ArrayList<Integer> result = new ArrayList<>();
+
+        if (carry == 1)
+            result.add(carry);
+
+        for (Integer i : a) {
+
+            if (result.isEmpty() && i == 0)
+                continue;
+
+            result.add(i);
+        }
+
+        return result;
     }
-
-    ArrayList<Integer> result = new ArrayList<>();
-
-    if (carry == 1)
-      result.add(carry);
-
-    for (Integer i : a) {
-
-      if(result.isEmpty() && i == 0)
-        continue;
-
-      result.add(i);
-    }
-
-    return result;
-  }
 }

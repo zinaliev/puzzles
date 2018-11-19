@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Given haystack and needle
  * Find all needle anagrams starting indexes in haystack
- *
+ * <p>
  * Example:
  * Haystack  - "abcdefgbca"
  * Needle    - "cba"
@@ -15,33 +15,33 @@ import java.util.List;
  */
 public class Anagram {
 
-   public List<Integer> findAnagramStartIndixes(String haystack, String needle){
-      List<Integer> result = new ArrayList<Integer>();
+    public List<Integer> findAnagramStartIndixes(String haystack, String needle) {
+        List<Integer> result = new ArrayList<Integer>();
 
-      if(haystack == null || needle == null)
-         return result;
+        if (haystack == null || needle == null)
+            return result;
 
-      int haystackLen = haystack.length();
-      int needleLen = needle.length();
+        int haystackLen = haystack.length();
+        int needleLen = needle.length();
 
-      if(haystackLen == 0 || needleLen == 0 || needleLen > haystackLen)
-         return result;
+        if (haystackLen == 0 || needleLen == 0 || needleLen > haystackLen)
+            return result;
 
-      needle = sort(needle);
+        needle = sort(needle);
 
-      for(int i = 0; i <= haystackLen - needleLen; i++){
-         String haystackPiece = sort(haystack.substring(i, i + needleLen));
-         if(haystackPiece.equals(needle))
-            result.add(i);
-      }
+        for (int i = 0; i <= haystackLen - needleLen; i++) {
+            String haystackPiece = sort(haystack.substring(i, i + needleLen));
+            if (haystackPiece.equals(needle))
+                result.add(i);
+        }
 
-      return result;
-   }
+        return result;
+    }
 
-   private String sort (String word){
-      char[] letters = word.toCharArray();
-      Arrays.sort(letters);
-      return new String(letters);
-   }
+    private String sort(String word) {
+        char[] letters = word.toCharArray();
+        Arrays.sort(letters);
+        return new String(letters);
+    }
 
 }

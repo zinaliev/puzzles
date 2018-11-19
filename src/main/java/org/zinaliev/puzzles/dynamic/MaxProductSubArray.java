@@ -16,29 +16,29 @@ package org.zinaliev.puzzles.dynamic;
  */
 public class MaxProductSubArray {
 
-  public int maxProduct(int[] nums) {
+    public int maxProduct(int[] nums) {
 
-    if (nums == null || nums.length == 0)
-      return 0;
+        if (nums == null || nums.length == 0)
+            return 0;
 
-    int res = nums[0];
+        int res = nums[0];
 
-    for (int i = 1, min = res, max = res; i < nums.length; i++) {
+        for (int i = 1, min = res, max = res; i < nums.length; i++) {
 
-      if (nums[i] < 0) {
-        int t = min;
-        min = max;
-        max = t;
-      }
+            if (nums[i] < 0) {
+                int t = min;
+                min = max;
+                max = t;
+            }
 
-      min = Math.min(nums[i], min * nums[i]);
-      max = Math.max(nums[i], max * nums[i]);
+            min = Math.min(nums[i], min * nums[i]);
+            max = Math.max(nums[i], max * nums[i]);
 
-      res = Math.max(res, max);
+            res = Math.max(res, max);
 
-      System.out.println("min: " + min + ", max: " + max + ", res: " + res);
+            System.out.println("min: " + min + ", max: " + max + ", res: " + res);
+        }
+
+        return res;
     }
-
-    return res;
-  }
 }

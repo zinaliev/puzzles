@@ -27,76 +27,76 @@ import java.util.Map;
  */
 public class TwoArraysIntersection {
 
-  /**
-   * In theory this method should be less efficient than {@link #intersectCaching(int[], int[])}
-   * but on leetcode tests it makes 2 vs 6 millis correspondingly
-   */
-  public int[] intersectSorting(int[] nums1, int[] nums2) {
-    if (nums1 == null || nums2 == null)
-      return new int[0];
+    /**
+     * In theory this method should be less efficient than {@link #intersectCaching(int[], int[])}
+     * but on leetcode tests it makes 2 vs 6 millis correspondingly
+     */
+    public int[] intersectSorting(int[] nums1, int[] nums2) {
+        if (nums1 == null || nums2 == null)
+            return new int[0];
 
-    Arrays.sort(nums1);
-    Arrays.sort(nums2);
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
 
-    int i1 = 0;
-    int i2 = 0;
-    int i = 0;
+        int i1 = 0;
+        int i2 = 0;
+        int i = 0;
 
-    while (i1 < nums1.length && i2 < nums2.length) {
+        while (i1 < nums1.length && i2 < nums2.length) {
 
-      int a1 = nums1[i1];
-      int a2 = nums2[i2];
+            int a1 = nums1[i1];
+            int a2 = nums2[i2];
 
-      if (a1 == a2) {
-        nums1[i++] = a1;
+            if (a1 == a2) {
+                nums1[i++] = a1;
 
-        i1++;
-        i2++;
-      } else if (a1 < a2) {
-        while (i1 < nums1.length && nums1[i1] < a2) {
-          i1++;
+                i1++;
+                i2++;
+            } else if (a1 < a2) {
+                while (i1 < nums1.length && nums1[i1] < a2) {
+                    i1++;
+                }
+            } else { // a1 > a2
+                while (i2 < nums2.length && nums2[i2] < a1) {
+                    i2++;
+                }
+            }
         }
-      } else { // a1 > a2
-        while (i2 < nums2.length && nums2[i2] < a1) {
-          i2++;
+
+        return Arrays.copyOf(nums1, i);
+    }
+
+    public int[] intersectCaching(int[] nums1, int[] nums2) {
+        if (nums1 == null || nums2 == null)
+            return new int[0];
+
+        int[] small = nums1.length < nums2.length ? nums1 : nums2;
+        int[] big = nums1.length < nums2.length ? nums2 : nums1;
+
+        Map<Integer, Integer> smallMap = new HashMap<>();
+        for (int i : small) {
+            Integer count = smallMap.putIfAbsent(i, 1);
+
+            if (count != null) {
+                smallMap.put(i, count + 1);
+            }
         }
-      }
+
+        int j = 0;
+        for (int i = 0; i < big.length; i++) {
+            Integer count = smallMap.get(big[i]);
+
+            if (count != null && count > 0) {
+
+                small[j] = big[i];
+                j++;
+
+                smallMap.put(big[i], count - 1);
+            }
+        }
+
+        return Arrays.copyOf(small, j);
     }
-
-    return Arrays.copyOf(nums1, i);
-  }
-
-  public int[] intersectCaching(int[] nums1, int[] nums2) {
-    if (nums1 == null || nums2 == null)
-      return new int[0];
-
-    int[] small = nums1.length < nums2.length ? nums1 : nums2;
-    int[] big = nums1.length < nums2.length ? nums2 : nums1;
-
-    Map<Integer, Integer> smallMap = new HashMap<>();
-    for (int i : small) {
-      Integer count = smallMap.putIfAbsent(i, 1);
-
-      if (count != null) {
-        smallMap.put(i, count + 1);
-      }
-    }
-
-    int j = 0;
-    for (int i = 0; i < big.length; i++) {
-      Integer count = smallMap.get(big[i]);
-
-      if (count != null && count > 0) {
-
-        small[j] = big[i];
-        j++;
-
-        smallMap.put(big[i], count - 1);
-      }
-    }
-
-    return Arrays.copyOf(small, j);
-  }
 
 
 }

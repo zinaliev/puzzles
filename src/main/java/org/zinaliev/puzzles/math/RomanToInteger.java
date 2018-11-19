@@ -45,46 +45,46 @@ package org.zinaliev.puzzles.math;
  */
 public class RomanToInteger {
 
-  public int romanToInt(String s) {
-    int result = 0;
-    int base = 0;
+    public int romanToInt(String s) {
+        int result = 0;
+        int base = 0;
 
-    for (int i = s.length() - 1; i >= 0; i--) {
-      int cur = map(s.charAt(i));
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int cur = map(s.charAt(i));
 
-      if(cur < base){
-        result -= cur;
-      } else {
-        result += cur;
+            if (cur < base) {
+                result -= cur;
+            } else {
+                result += cur;
 
-        if(cur > base)
-          base = cur;
-      }
+                if (cur > base)
+                    base = cur;
+            }
+        }
+
+        return result;
     }
 
-    return result;
-  }
+    private int map(char roman) {
+        switch (roman) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                throw new IllegalArgumentException("Invalid Roman number " + roman);
+        }
 
-  private int map(char roman) {
-    switch (roman) {
-      case 'I':
-        return 1;
-      case 'V':
-        return 5;
-      case 'X':
-        return 10;
-      case 'L':
-        return 50;
-      case 'C':
-        return 100;
-      case 'D':
-        return 500;
-      case 'M':
-        return 1000;
-      default:
-        throw new IllegalArgumentException("Invalid Roman number " + roman);
     }
-
-  }
 
 }

@@ -12,15 +12,15 @@ package org.zinaliev.puzzles.bits;
  */
 public class FindNonDuplicatingItem {
 
-  // DO NOT MODIFY THE LIST
-  public int singleNumber(final int... a) {
+    // DO NOT MODIFY THE LIST
+    public int singleNumber(final int... a) {
 
-    int result = 0;
+        int result = 0;
 
-    for (Integer i : a) {
-      result = result ^ i;
+        for (Integer i : a) {
+            result = result ^ i;
+        }
+
+        return result;
     }
-
-    return result;
-  }
 }

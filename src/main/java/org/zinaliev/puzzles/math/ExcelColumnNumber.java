@@ -1,7 +1,5 @@
 package org.zinaliev.puzzles.math;
 
-import java.util.ArrayList;
-
 /**
  * Given a column title as appears in an Excel sheet, return its corresponding column number.
  * <p>
@@ -23,20 +21,20 @@ import java.util.ArrayList;
  */
 public class ExcelColumnNumber {
 
-  public int titleToNumber(String a) {
-    int result = 0;
-    int base = 1;
+    public int titleToNumber(String a) {
+        int result = 0;
+        int base = 1;
 
-    for (int i = a.length() - 1; i >= 0; i--) {
-      result += base * toNum(a.charAt(i));
+        for (int i = a.length() - 1; i >= 0; i--) {
+            result += base * toNum(a.charAt(i));
 
-      base *= toNum('Z');
+            base *= toNum('Z');
+        }
+
+        return result;
     }
 
-    return result;
-  }
-
-  private int toNum(char c) {
-    return c - 'A' + 1;
-  }
+    private int toNum(char c) {
+        return c - 'A' + 1;
+    }
 }

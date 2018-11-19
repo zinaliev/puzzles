@@ -26,36 +26,36 @@ import java.util.Collections;
 public class PascalTriangle {
 
 
-  public ArrayList<ArrayList<Integer>> generate(int a) {
-    ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+    public ArrayList<ArrayList<Integer>> generate(int a) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
 
-    if(a == 0)
-      return result;
+        if (a == 0)
+            return result;
 
-    ArrayList<Integer> lastRow = new ArrayList<>(Collections.nCopies(a, 1));
+        ArrayList<Integer> lastRow = new ArrayList<>(Collections.nCopies(a, 1));
 
-    int k = 1;
+        int k = 1;
 
-    do {
-      ArrayList<Integer> row = new ArrayList<>();
+        do {
+            ArrayList<Integer> row = new ArrayList<>();
 
-      for(int i = 0; i < k; i++)
-        row.add(lastRow.get(i));
+            for (int i = 0; i < k; i++)
+                row.add(lastRow.get(i));
 
-      result.add(row);
+            result.add(row);
 
-      for(int i = k - 1; i > 0; i--) {
-        lastRow.set(i, lastRow.get(i) + lastRow.get(i - 1));
-      }
+            for (int i = k - 1; i > 0; i--) {
+                lastRow.set(i, lastRow.get(i) + lastRow.get(i - 1));
+            }
 
-      k++;
-    } while (k <= a );
+            k++;
+        } while (k <= a);
 
 
-    for(ArrayList<Integer> r : result)
-      System.out.println(Arrays.toString(r.toArray()));
+        for (ArrayList<Integer> r : result)
+            System.out.println(Arrays.toString(r.toArray()));
 
-    return result;
+        return result;
 
-  }
+    }
 }
