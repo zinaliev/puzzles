@@ -3,8 +3,10 @@ package org.zinaliev.puzzles;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Currency;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.zinaliev.puzzles.ReverseShuffleMerge.reverseShuffleMerge;
 
@@ -48,6 +50,5 @@ public class ReverseShuffleMergeTest {
 
         assertEquals(0, count);
     }
-
 
 }
